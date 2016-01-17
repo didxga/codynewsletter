@@ -37,19 +37,6 @@ server.error(function(err, req, res, next){
 });
 server.listen( port);
 
-//Setup Socket.IO
-var io = io.listen(server);
-io.sockets.on('connection', function(socket){
-  console.log('Client Connected');
-  socket.on('message', function(data){
-    socket.broadcast.emit('server_message',data);
-    socket.emit('server_message',data);
-  });
-  socket.on('disconnect', function(){
-    console.log('Client Disconnected.');
-  });
-});
-
 
 ///////////////////////////////////////////
 //              Routes                   //
@@ -59,6 +46,30 @@ io.sockets.on('connection', function(socket){
 
 server.get('/', function(req,res){
   res.render('index.jade', {
+    locals : { 
+              title : 'Your Page Title'
+             ,description: 'Your Page Description'
+             ,author: 'Your Name'
+             ,analyticssiteid: 'XXXXXXX' 
+            }
+  });
+});
+
+// regex match url, pattern is: "issue[number]" E.G. issue0, issue10 ... ...
+server.get(/^\/issue[0-9]+$/, function(req,res){
+  var url = req.url.substring(1, req.url.length) + '.jade';
+  res.render(url, {
+    locals : { 
+              title : 'Your Page Title'
+             ,description: 'Your Page Description'
+             ,author: 'Your Name'
+             ,analyticssiteid: 'XXXXXXX' 
+            }
+  });
+});
+
+server.get('/archives', function(req,res){
+  res.render('archives.jade', {
     locals : { 
               title : 'Your Page Title'
              ,description: 'Your Page Description'

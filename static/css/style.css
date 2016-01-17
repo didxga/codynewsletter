@@ -1,3 +1,7 @@
+body {
+  background-image: url(../images/wavegrid.png);
+}
+
 .box {
   margin:auto auto;
   width:930px;
@@ -38,6 +42,7 @@
 
 .sub form {
   text-align:center;
+  background-image: url(../images/wavegrid.png);
 }
 
 .sub input#mc-embedded-subscribe {
@@ -90,4 +95,43 @@ p.trial {
   border:solid 4px orange; 
   position:absolute;
   bottom:10px;
+}
+
+.archive_container {
+  width:70%;
+  margin: 0 auto;
+  text-align:center;
+}
+
+.archive_container a {
+  text-decoration:none;
+}
+
+.archive_container .list {
+  margin-top:10px;
+}
+
+.archive_container .list div {
+    border-top: 1px solid #C4C9CC;
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.archive_container .name {
+    margin-bottom: 20px;
+    font-size: 80px;
+    color: black;
+}
+
+.archive_container h3{
+  color:#5F6263
+}
+
+.archive_container .icon {
+    background-image: url(../images/snow.png);
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+}
 }
